@@ -39,6 +39,8 @@ section {
   top: 0;
   z-index: 1;
   /*to prevent other contents from going over the header section when scrolling*/
+  transition: top 0.3s;
+  /* Transition effect when sliding down (and up) */  
 }
 
 body.modal-open {
@@ -73,7 +75,7 @@ body.modal-open {
 
 .navigation__link:hover,
 .navigation__link--active {
-  color: #f5c0c0;
+  color: #660000;
 }
 
 .header__phone {
@@ -96,7 +98,7 @@ font-family: 'Mate SC', serif;
   outline: none;
 }
 .header__phone--link:hover {
-  color: #f5c0c0;
+  color: #660000;
 }
 
 .header__phone--link:before {
@@ -303,12 +305,87 @@ font-family: 'Mate SC', serif;
   text-align: center;
 }
 
-.title__heading {
-  font-family: 'Mate SC', serif;
-  font-size: 9rem;
-  color: #660000;
+.typing-demo {
+  width: 22ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
   white-space: nowrap;
-  margin-bottom: 5rem;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-size: 2em;
+  font-family: 'Mate SC', serif;
+  color: #660000;
+  font-weight: bold;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+.title__btn {
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+    margin: 50px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -380,7 +457,7 @@ font-family: 'Mate SC', serif;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   color: black;
   padding-left: 12rem;
   padding-right: 12rem;
@@ -411,7 +488,6 @@ font-family: 'Mate SC', serif;
 } 
 
 .about-text__paragraph {
-  font-family: 'Mate SC', serif;
   font-size: 18px;
   color: black;
   text-align: justify;
@@ -522,7 +598,8 @@ font-family: 'Mate SC', serif;
   min-width: 18rem;
   font-family: 'Mate SC', serif;
   color: #ff7171;
-  font-size: 1.6rem;
+  font-weight: bold;
+  font-size: 2rem;
   height: 5rem;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -656,6 +733,7 @@ font-family: 'Mate SC', serif;
 .product-card {
   position: relative;
   border-radius: 15px;
+
   border: 2px solid #ff7171;
   background-color: white;
   width: 300px;
@@ -713,6 +791,8 @@ font-family: 'Mate SC', serif;
 
 .product-card-body > h5 {
   font-size: 2.5rem;
+  font-family: 'Mate SC', serif;
+  font-weight: bold;
   position: relative;
   color:#660000;
   text-shadow: 0 0 5px #f0e4d7;
@@ -738,7 +818,8 @@ font-family: 'Mate SC', serif;
   width: 18rem;
   font-family: 'Mate SC', serif;
   color: #ff7171;
-  font-size: 1.6rem;
+  font-size: 2rem;
+  font-weight: bold;
   height: 5rem;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -786,10 +867,14 @@ font-family: 'Mate SC', serif;
 
 .product-desc h5 {
   font-size: 2.5rem;
+  font-family: 'Mate SC', serif;
+  font-weight: bold;
 }
 
 .product-desc h6 {
   font-size: 2rem;
+  font-family: 'Mate SC', serif;
+  font-weight: bold;
 }
 
 .product-desc-input-width {
@@ -863,7 +948,8 @@ font-family: 'Mate SC', serif;
   background-color: #ff7171;
   color: #ffffff;
   text-align: center;
-  padding: 1rem 0;
+  padding: 5rem 0;
+  margin-top: 100px;
 }
 
 .footer p {
