@@ -767,14 +767,13 @@ font-family: 'Mate SC', serif;
 .product-card-image-frame {
   width: 300px;
   height: 300px;
- 
   overflow: hidden;
 }
 
 .product-card-image {
   width: 300px;
   height: 300px;
-  opacity: 0.5;
+  opacity: 0.85;
   -webkit-transition: -webkit-transform 0.2s;
   transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
