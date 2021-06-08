@@ -19,7 +19,7 @@ export default () => {
 		let offset = window.pageYOffset;
 		parallax.forEach(function (prllx, i) {
 			if (offset > prllx.offsetTop) {
-				prllx.style.backgroundPositionY = (offset - prllx.offsetTop) * 0.6 + "px"
+				prllx.style.backgroundPositionY = (offset - prllx.offsetTop) * 0.6 + "px"			
 			}
 			else {
 				prllx.style.backgroundPositionY = "0px";
@@ -32,7 +32,7 @@ export default () => {
 	function smoothScroll(target, duration) {
 		var target = document.querySelector(target);
 
-		var navbarHeight = 100;
+		var navbarHeight = 0;
 
 		var targetPosition = target.getBoundingClientRect().top - navbarHeight;  //vertical distance to the target section minus header height
 		var startPosition = window.pageYOffset;
