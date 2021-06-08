@@ -872,6 +872,11 @@ font-family: 'Mate SC', serif;
 
 .footer p a {
   text-decoration: none;
+  color: #ffffff;
+}
+.footer p a:hover,
+.footer p a:visited {
+  color:#f5c0c0;
 }
 
 .footer div a {
@@ -1061,3 +1066,4 @@ input[type='number'] {
   margin-left: 7.5px;
   margin-right: 7.5px;
 }
+
