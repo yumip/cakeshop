@@ -395,7 +395,7 @@ font-family: 'Mate SC', serif;
   }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1030px) {
   .title__heading {
     font-size: 5rem;
   }
@@ -416,7 +416,7 @@ font-family: 'Mate SC', serif;
 
 @media screen and (max-width: 768px) {
   .title__heading {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .hero .title {
@@ -426,10 +426,27 @@ font-family: 'Mate SC', serif;
 
 @media screen and (max-width: 400px) {
   .title__heading {
-    white-space: normal;
+    font-size: 2rem;
+  }
+  .header__logo {
+    position: absolute;
+    max-width: 100px;
+    bottom: 100px;
+    left: -10px;
+  }
+
+  .logo__img {
+    position: absolute;
+    width:60px;
+    top: 0.5rem;
+    left: 0;
   }
 }
-
+@media screen and (max-width: 400px) {
+    .logo__img {
+      width: 50px;
+    }
+}
 
 /*end*/
 .btn--medium {
@@ -687,7 +704,7 @@ font-family: 'Mate SC', serif;
 .product-search-box {
   position: relative;
   max-width: 600px;
-  min-width: 280px;
+  min-width: 250px;
   width: 60vw;
   height: 5rem;
   margin: auto;
