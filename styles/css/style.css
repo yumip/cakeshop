@@ -50,7 +50,7 @@ body.modal-open {
 }
 
 .logo__img {
-  width: 5rem;
+  width: 8rem;
   margin-top: 1.2rem;
   margin-left: 2rem;
 }
@@ -204,7 +204,7 @@ font-family: 'Mate SC', serif;
   }
   .logo__img {
     position: absolute;
-    left: 20px;
+    left: 0px;
     margin-right: 0;
     bottom: 1.2rem;
   }
@@ -276,10 +276,10 @@ font-family: 'Mate SC', serif;
     font-size: 1.6rem;
   }
 }
-
+/*start*/
 .hero {
-  margin-top: 8.5rem;
-  max-height: calc(100vh - 8.5rem);
+  /* margin-top: 5rem; */
+  max-height: 100vh;
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d4e4ef+0,a2cad8+100&0.56+0,0.75+100 */
   /* FF3.6-15 */
   background: -webkit-linear-gradient(45deg, #f0e4d7cb 0%, #f5c0c083 100%);
@@ -288,6 +288,7 @@ font-family: 'Mate SC', serif;
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0e4d7cb', endColorstr='#f5c0c083', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
+  overflow: hidden;
 }
 
 .hero__video {
@@ -301,7 +302,7 @@ font-family: 'Mate SC', serif;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
@@ -311,9 +312,14 @@ font-family: 'Mate SC', serif;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
-  font-size: 2em;
+
+}
+
+.title__heading {
+  font-size: 8rem;
   font-family: 'Mate SC', serif;
   color: #660000;
+  white-space: nowrap;
   font-weight: bold;
 }
 
@@ -330,12 +336,12 @@ font-family: 'Mate SC', serif;
 }
 
 .title__btn {
-    animation: fadeIn 5s;
-    -webkit-animation: fadeIn 5s;
-    -moz-animation: fadeIn 5s;
-    -o-animation: fadeIn 5s;
-    -ms-animation: fadeIn 5s;
-    margin: 50px;
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+  margin: 50px;
 }
 
 @keyframes fadeIn {
@@ -390,17 +396,20 @@ font-family: 'Mate SC', serif;
 
 @media screen and (max-width: 992px) {
   .title__heading {
-    font-size: 7rem;
+    font-size: 5rem;
   }
+
   .hero .wrapper {
     display: none;
   }
+
   .hero {
-    height: calc(100vh - 8.5rem);
+    height: 100vh;
     background-image: linear-gradient(45deg, #f0e4d7cb 0%, #f5c0c083 100%),
-    url(../../assets/img/hero-img.jpg);
+      url(../../assets/img/hero-img.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    overflow-x: hidden;
   }
 }
 
@@ -408,6 +417,7 @@ font-family: 'Mate SC', serif;
   .title__heading {
     font-size: 4rem;
   }
+
   .hero .title {
     top: 66%;
   }
@@ -419,6 +429,8 @@ font-family: 'Mate SC', serif;
   }
 }
 
+
+/*end*/
 .btn--medium {
   font-family: 'Mate SC', serif;
   font-size: 32px;
@@ -462,6 +474,8 @@ font-family: 'Mate SC', serif;
   padding-left: 12rem;
   padding-right: 12rem;
   padding-top: 12rem;
+  padding-bottom:12rem;
+  overflow: hidden;
 
 }
 
