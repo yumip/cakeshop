@@ -164,7 +164,7 @@ font-family: 'Mate SC', serif;
   display: none;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 992px) {
   .header {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -231,7 +231,7 @@ font-family: 'Mate SC', serif;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
