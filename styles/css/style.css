@@ -38,15 +38,47 @@ section {
   position: fixed;
   top: 0;
   z-index: 1;
+  align-items: center;
   /*to prevent other contents from going over the header section when scrolling*/
   transition: top 0.3s;
   /* Transition effect when sliding down (and up) */  
 }
 
-body.modal-open {
-  width: 100% !important;
-  padding-right: 0 !important;
-  overflow-y: scroll !important;
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100vw;
+  /* Full width */
+  height: 100vh;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 12% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+.open {
+  visibility: visible;
+  display:block;
+  opacity: 1;
+  height:100vh;
+  transition-delay: 0s;
 }
 
 .logo__img {
@@ -263,7 +295,6 @@ font-family: 'Mate SC', serif;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin: auto;
   }
   .header__phone {
     margin: 1rem auto;
@@ -296,6 +327,7 @@ font-family: 'Mate SC', serif;
   z-index: -100;
   background-size: cover;
   overflow: hidden;
+  opacity: 0.5;
 }
 
 .hero .title {
@@ -562,7 +594,7 @@ font-family: 'Mate SC', serif;
   height: 100%;
   content: "";
   position: absolute;
-  background-image: url(../../assets/img/about-us.jpg);
+  background-image: url(https://images.unsplash.com/photo-1519340333755-56e9c1d04579?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -641,6 +673,7 @@ font-family: 'Mate SC', serif;
   padding-left: 1rem;
   padding-right: 1rem;
   cursor: pointer;
+  background-color: white;
 }
 
 .product-category:hover,
@@ -672,6 +705,7 @@ font-family: 'Mate SC', serif;
         align-self: center;
     padding-left: 1rem;
     padding-right: 1rem;
+
   }
   .product-categories button:not(:first-child) {
     display: none;
@@ -869,12 +903,18 @@ font-family: 'Mate SC', serif;
   border: none;
 }
 
-.product-desc-close {
-  font-size: 1rem;
+.shopping-cart-close, .product-desc-close {
+  font-size: 1.5rem;
+  outline: none;
+  cursor: pointer;
+  background: none !important;
+  border: none;
 }
 
 .product-desc-header {
   border-bottom: 0 none;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .product-desc-content {
@@ -889,7 +929,8 @@ font-family: 'Mate SC', serif;
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-align: left;
-  color:#ff7171
+  color:#ff7171;
+  padding-left:10px
 }
 
 .product-desc-content p {
@@ -912,6 +953,9 @@ font-family: 'Mate SC', serif;
   width: 10rem;
 }
 
+.product-modal-body{
+  display:flex
+}
 .price-qty {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -921,14 +965,19 @@ font-family: 'Mate SC', serif;
           justify-content: space-between;
   margin: 1rem 0;
 }
-
+.carousel-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
 .product-carousel-arrow-left {
   position: absolute;
   z-index: 1;
   top: 45%;
-  left: -40px;
+  left: 40px;
   border: none;
   font-size: 6rem;
+  transform: (-50%, -50%);
   background-color: transparent;
   color: #f0e4d7;
 }
@@ -937,13 +986,18 @@ font-family: 'Mate SC', serif;
   position: absolute;
   z-index: 1;
   top: 45%;
-  right: -40px;
+  right: 40px;
   border: none;
   font-size: 6rem;
   background-color: transparent;
   color: #f0e4d7;
 }
-
+.col-6 {
+  width: 50%;
+}
+.col-3 {
+  width: 25%;
+}
 .product-carousel-arrow-left:hover,
 .product-carousel-arrow-left:active,
 .product-carousel-arrow-right:hover,
@@ -955,17 +1009,28 @@ font-family: 'Mate SC', serif;
   .store > h1 {
     font-size: 4rem;
   }
+  .col-6 {
+    width: 100%;
+  }
+  .carousel-image {
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .product-modal-body {
+    flex-direction:column;
+  }
   .product-carousel-arrow-left {
-    top: -15px;
-    left: 35%;
+    position:relative;
+    left: -10%;
     border: none;
     font-size: 4rem;
     background-color: transparent;
     color: gray;
   }
   .product-carousel-arrow-right {
-    top: -15px;
-    right: 35%;
+    position:relative;
+    right: -10%;
     font-size: 4rem;
     border: none;
     background-color: transparent;
@@ -1002,10 +1067,31 @@ font-family: 'Mate SC', serif;
 }
 
 /*Shopping Cart*/
+
+#shoppingCartContent > .modal-header {
+  border-bottom: 0 none;
+  display: flex;
+  justify-content: space-between;
+}
+.modal-footer > .container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+.input-group{
+  display: flex;
+}
 #shoppingCartContent{
   -webkit-box-shadow: 1px 1px 5px #ff7171;
           box-shadow: 1px 1px 5px #ff7171;
   border-radius: 12px;
+  max-width: 500px;
   }
 
 #shoppingCartPopUp p {
@@ -1025,23 +1111,70 @@ font-family: 'Mate SC', serif;
   color: #ff7171;
   font-size: 2.5rem !important;
   font-family: 'Mate SC', serif;
+  text-align: center;
+  padding-left:50px;
 }
 
 #finalTotalDiv{
   color: #ff7171;
-  font-size: 2.5rem !important;
+  font-size: 2.5rem !important; 
+  padding-bottom: 10px;
+  text-align: center;
+}
+#middleColumn {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-
+.cart-input{
+  display:flex;
+  justify-content: center;
+}
+.input-group{
+  height:2.5rem;
+  margin:auto;
+}
 #shoppingCartPopUp button {
   font-size: 1.5rem !important;
 }
+#shoppingCartPopUpLabel {
+  margin: auto;
+}
+.row.cart {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+}
 
-#shoppingCartPopUp #checkoutButton{
+  #checkoutButton {
+    width: 250px;
+     margin: auto;
+  }
+  .trash-button{
+   margin-top: 45px;
+  }
+  .my-auto {
+    text-align: center;
+  }
+#shoppingCartContent .modal-header {
+  margin: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f5c0c0;
+}
+#shoppingCartContent .modal-footer{
+  margin: 10px;
+  padding-top:10px;
+  border-top: 2px solid #f5c0c0;
+}
+/* #shoppingCartPopUp #checkoutButton{
   display: inline;
   font-family: 'Mate SC', serif;
+  font-weight: bold;
   color: white;
   height: 5rem;
+  width: 18rem;
   border: 2px solid #ff7171;
   border-radius: 8px;
   padding-left: 1rem;
@@ -1055,7 +1188,7 @@ font-family: 'Mate SC', serif;
   color: #ff7171;
   border: 2px solid #ff7171;
 ;
-}
+} */
 
 #shoppingCartPopUp .minus-button:hover, .plus-button:hover {
   background-color: #f5c0c0;
@@ -1072,10 +1205,12 @@ font-family: 'Mate SC', serif;
 
 #shoppingCartPopUp .minus-button {
   border-radius: 8px 0px 0px 8px;
+  width:3rem;
 }
 
 #shoppingCartPopUp .plus-button{
   border-radius: 0px 8px 8px 0px;
+  width:3rem;
 }
 
 #shoppingCartPopUp .minus-button, .plus-button{
@@ -1089,16 +1224,29 @@ cursor: pointer;
   color: #ff7171;
   border-top: 1px solid #ff7171;
   border-bottom: 1px solid #ff7171;
+  border-left: none;
+  border-right: none;
+  width:10rem;
+  text-align: center;
 }
-
 
 #shoppingCartPopUp .input-group{
   width: 90%;
 }
-@media screen and (max-width: 400px){
+
+@media screen and (max-width: 900px){
+
+  #totalText {
+    padding-left:0;
+  }
+}
+@media screen and (max-width: 600px){
   #shoppingCartPopUp  #middleColumn{
     margin-left: 10px;
     margin-right: 10px;
+  }
+  .row.cart {
+    flex-wrap: wrap;
   }
 
   #shoppingCartPopUp #trashColumn{
@@ -1112,11 +1260,21 @@ cursor: pointer;
   #shoppingCartPopUp #checkoutButton{
     margin-bottom: 15px;
   }
+  #checkoutButton {
+    width: 100%;
+    margin: auto;
+  }
+  .trash-button {
+    margin-top: 5px;
+  }
+
 }
 
 .text-1-5rem {
   font-size: 1.5rem;
 }
+
+
 
 /* Turns off the up / down arrows next to the number inputs in Chrome, Safari, Edge, and Opera */
 input::-webkit-outer-spin-button,

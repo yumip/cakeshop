@@ -7,14 +7,14 @@ export default class ProductArchive {
     const html = `
           <div class="product-card" data-category="${product.category}" data-id="${product.productId}" data-arrayindex="${index}">
             <div class="product-card-image-frame">
-              <img class="product-card-image" src="${product.image}" data-toggle="modal" data-target="#product-modal" />
+              <img class="product-card-image" src="${product.image}" data-modal="product-modal" />
             </div>
             <div class="product-card-body">
               <h5 class="product-card-name">${product.productName}</h5>
               <h5 class="product-card-price">${product.price}</h5>
             </div>
             <div class="product-card-footer">
-              <button class="btn add-to-cart shadow-none">Add to cart</button>
+              <button class="add-to-cart">Add to cart</button>
             </div>
           </div>
     `;
@@ -53,8 +53,9 @@ export default class ProductArchive {
       this.defaultHandler(e);
       if (e.target.matches('.product-card-image')) {
         this.modalUpdate(productModal, e.target.closest('.product-card').dataset.arrayindex);
-        //console.log(e.target.closest('.product-card').dataset.arrayindex, "hello");
+        //console.log(e.target.closest('.product-card').dataset.arrayindex, "hello");        
       }
+    
     });
 
     // productModal.querySelector('.product-desc-input-width').addEventListener('click', (e) => {
